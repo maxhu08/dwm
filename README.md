@@ -29,4 +29,6 @@ exec dwm
 
 ## showcase
 
+![2](./screenshots/2.png)
+
 ![1](./screenshots/1.png)
