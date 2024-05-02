@@ -6,7 +6,10 @@ this is my fork of dwm
 
 patches included so far:
 
-- stacker (https://dwm.suckless.org/patches/stacker)
+- stacker https://dwm.suckless.org/patches/stacker
+  - makes it so that MOD+J & MOD+K moves windows up & down the stack
+- vanitygaps https://dwm.suckless.org/patches/vanitygaps
+  - provides adjustable gaps and more layouts
 
 ## quick-start
 
