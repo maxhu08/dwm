@@ -11,7 +11,9 @@ patches included so far:
 - `stacker` https://dwm.suckless.org/patches/stacker
   - makes it so that MOD+J & MOD+K moves windows up & down the stack
 - `vanitygaps` https://dwm.suckless.org/patches/vanitygaps
-  - provides adjustable gaps and more layouts
+  - provides adjustable gaps with keybinds and more layouts
+- `setborderpx` https://dwm.suckless.org/patches/setborderpx
+  - provides adjustable borderpx with keybinds
 - `tiledmove` https://dwm.suckless.org/patches/tiledmove
   - makes it so MOD+lmb allows windows to stay tiled while moving them
 - `resizehere` https://dwm.suckless.org/patches/resizehere
