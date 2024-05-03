@@ -12,10 +12,11 @@ patches included so far:
   - provides adjustable gaps and more layouts
 - `tiledmove` https://dwm.suckless.org/patches/tiledmove
   - makes it so MOD+lmb allows windows to stay tiled while moving them
+- `resizehere` https://dwm.suckless.org/patches/resizehere
+  - prevents mouse from warping to bottom right corner when resizing window
 
 planning to add:
 
-- https://dwm.suckless.org/patches/resizehere
 - https://dwm.suckless.org/patches/removeborder
 
 ## quick-start
