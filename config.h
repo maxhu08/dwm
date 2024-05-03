@@ -175,6 +175,11 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 
+  // setborderpx MOD+{ MOD+}
+  { MODKEY|ShiftMask,             XK_bracketleft, 		setborderpx,    {.i = -2 } },
+	{ MODKEY|ShiftMask,             XK_bracketright, 		setborderpx,    {.i = +2 } },
+  // { MODKEY|ShiftMask,             XK_numbersign, 	setborderpx,    {.i = 0 } },
+
 	// change tag MOD+[1-9]
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)

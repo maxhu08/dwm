@@ -1,38 +1,27 @@
---- dwm.c
-+++ dwm.c
-@@ -841,27 +849,16 @@ focusmon(const Arg *arg)
- void
- focusstack(const Arg *arg)
- {
--	Client *c = NULL, *i;
-+	int i = stackpos(arg);
-+	Client *c, *p;
+--- dwm.c	2020-05-12 02:17:20.070933833 +0200
++++ dwm.c	2020-05-14 00:17:35.047919771 +0200
+@@ -119,6 +119,7 @@ struct Monitor {
+ 	int by;               /* bar geometry */
+ 	int mx, my, mw, mh;   /* screen size */
+ 	int wx, wy, ww, wh;   /* window area  */
++	unsigned int borderpx;
+ 	unsigned int seltags;
+ 	unsigned int sellt;
+ 	unsigned int tagset[2];
+@@ -639,6 +641,7 @@ createmon(void)
+ 	m->nmaster = nmaster;
+ 	m->showbar = showbar;
+ 	m->topbar = topbar;
++	m->borderpx = borderpx;
+ 	m->lt[0] = &layouts[0];
+ 	m->lt[1] = &layouts[1 % LENGTH(layouts)];
+ 	strncpy(m->ltsymbol, layouts[0].symbol, sizeof m->ltsymbol);
+@@ -1048,7 +1051,7 @@ manage(Window w, XWindowAttributes *wa)
+ 	/* only fix client y-offset, if the client center might cover the bar */
+ 	c->y = MAX(c->y, ((c->mon->by == c->mon->my) && (c->x + (c->w / 2) >= c->mon->wx)
+ 		&& (c->x + (c->w / 2) < c->mon->wx + c->mon->ww)) ? bh : c->mon->my);
+-	c->bw = borderpx;
++	c->bw = c->mon->borderpx;
  
--	if (!selmon->sel)
-+	if(i < 0)
- 		return;
--	if (arg->i > 0) {
--		for (c = selmon->sel->next; c && !ISVISIBLE(c); c = c->next);
--		if (!c)
--			for (c = selmon->clients; c && !ISVISIBLE(c); c = c->next);
--	} else {
--		for (i = selmon->clients; i != selmon->sel; i = i->next)
--			if (ISVISIBLE(i))
--				c = i;
--		if (!c)
--			for (; i; i = i->next)
--				if (ISVISIBLE(i))
--					c = i;
--	}
--	if (c) {
--		focus(c);
--		restack(selmon);
--	}
-+
-+	for(p = NULL, c = selmon->clients; c && (i || !ISVISIBLE(c));
-+	    i -= ISVISIBLE(c) ? 1 : 0, p = c, c = c->next);
-+	focus(c ? c : p);
-+	restack(selmon);
- }
- 
- Atom
+ 	wc.border_width = c->bw;
+ 	XConfigureWindow(dpy, w, CWBorderWidth, &wc);
