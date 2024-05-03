@@ -2,6 +2,8 @@
 
 this is my fork of dwm
 
+also see my config for `dwmblocks`: https://github.com/maxhu08/dwmblocks
+
 ## patches
 
 patches included so far:
