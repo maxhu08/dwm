@@ -46,26 +46,27 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 #include "vanitygaps.c"
 
 static const Layout layouts[] = {
-	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "[M]",      monocle },
-	{ "[@]",      spiral },
-	{ "[\\]",     dwindle },
-	{ "H[]",      deck },
-	{ "TTT",      bstack },
-	{ "===",      bstackhoriz },
-	{ "HHH",      grid },
-	{ "###",      nrowgrid },
-	{ "---",      horizgrid },
-	{ ":::",      gaplessgrid },
-	{ "|M|",      centeredmaster },
-	{ ">M>",      centeredfloatingmaster },
-	{ "><>",      NULL },    /* no layout function means floating behavior */
-	{ NULL,       NULL },
+  /* symbol     arrange function */
+  { "[]=",      tile },                  // 0
+  { "[M]",      monocle },               // 1
+  { "[@]",      spiral },                // 2
+  { "[\\]",     dwindle },               // 3
+  { "H[]",      deck },                  // 4
+  { "TTT",      bstack },                // 5
+  { "===",      bstackhoriz },           // 6
+  { "HHH",      grid },                  // 7
+  { "###",      nrowgrid },              // 8
+  { "---",      horizgrid },             // 9
+  { ":::",      gaplessgrid },           // 10
+  { "|M|",      centeredmaster },        // 11
+  { ">M>",      centeredfloatingmaster },// 12
+  { "><>",      NULL },                  // 13 (no layout function means floating behavior)
+  { NULL,       NULL },                  // 14
 };
 
 /* key definitions */
 #define MODKEY Mod4Mask
+#define ALTKEY Mod1Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -128,27 +129,16 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 
 	// adjust gaps MOD+ALT+u MOD+ALT+U
-	{ MODKEY|Mod1Mask,              XK_u,      incrgaps,       {.i = +10 } },
-	{ MODKEY|Mod1Mask|ShiftMask,    XK_u,      incrgaps,       {.i = -10 } },
+	{ MODKEY|ALTKEY,                XK_u,      incrgaps,       {.i = +10 } },
+	{ MODKEY|ALTKEY|ShiftMask,      XK_u,      incrgaps,       {.i = -10 } },
 
 	// adjust inside gaps MOD+ALT+i MOD+ALT+i
-	// { MODKEY|Mod1Mask,              XK_i,      incrigaps,      {.i = +1 } },
-	// { MODKEY|Mod1Mask|ShiftMask,    XK_i,      incrigaps,      {.i = -1 } },
+	// { MODKEY|ALTKEY,                XK_i,      incrigaps,      {.i = +1 } },
+	// { MODKEY|ALTKEY|ShiftMask,      XK_i,      incrigaps,      {.i = -1 } },
 
 	//  adjust outside gaps MOD+ALT+o MOD+ALT+o
-	// { MODKEY|Mod1Mask,              XK_o,      incrogaps,      {.i = +1 } },
+	// { MODKEY|ALTKEY,                XK_o,      incrogaps,      {.i = +1 } },
 	// { MODKEY|Mod1Mask|ShiftMask,    XK_o,      incrogaps,      {.i = -1 } },
-
-	// { MODKEY|Mod1Mask,              XK_6,      incrihgaps,     {.i = +1 } },
-	// { MODKEY|Mod1Mask|ShiftMask,    XK_6,      incrihgaps,     {.i = -1 } },
-	// { MODKEY|Mod1Mask,              XK_7,      incrivgaps,     {.i = +1 } },
-	// { MODKEY|Mod1Mask|ShiftMask,    XK_7,      incrivgaps,     {.i = -1 } },
-	// { MODKEY|Mod1Mask,              XK_8,      incrohgaps,     {.i = +1 } },
-	// { MODKEY|Mod1Mask|ShiftMask,    XK_8,      incrohgaps,     {.i = -1 } },
-	// { MODKEY|Mod1Mask,              XK_9,      incrovgaps,     {.i = +1 } },
-	// { MODKEY|Mod1Mask|ShiftMask,    XK_9,      incrovgaps,     {.i = -1 } },
-	// { MODKEY|Mod1Mask,              XK_0,      togglegaps,     {0} },
-	// { MODKEY|Mod1Mask|ShiftMask,    XK_0,      defaultgaps,    {0} },
 
 	// tab tag
 	{ MODKEY,                       XK_Tab,    view,           {0} },
@@ -156,10 +146,14 @@ static const Key keys[] = {
 	// close window
 	{ MODKEY,                       XK_c,      killclient,     {0} },
 
-	// change layouts MOD+(T|F|M)
-	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[2]} },
+	// change layouts MOD+ALT+[1-4]
+	{ MODKEY|ALTKEY,                XK_1,      setlayout,      {.v = &layouts[0]}  }, // tile
+	{ MODKEY|ALTKEY,                XK_2,      setlayout,      {.v = &layouts[13]} }, // float
+	{ MODKEY|ALTKEY,                XK_3,      setlayout,      {.v = &layouts[1]}  }, // monocle
+	{ MODKEY|ALTKEY,                XK_4,      setlayout,      {.v = &layouts[11]} }, // centeredmaster
+	{ MODKEY|ALTKEY,                XK_5,      setlayout,      {.v = &layouts[5]}  }, // bstac
+	{ MODKEY|ALTKEY,                XK_6,      setlayout,      {.v = &layouts[7]}  }, // grid
+  { MODKEY|ALTKEY,                XK_7,      setlayout,      {.v = &layouts[2]}  }, // spiral
 	// { MODKEY,                       XK_space,  setlayout,      {0} },
 	// { MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 
