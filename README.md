@@ -11,6 +11,12 @@ patches included so far:
 - vanitygaps https://dwm.suckless.org/patches/vanitygaps
   - provides adjustable gaps and more layouts
 
+planning to add:
+
+- https://dwm.suckless.org/patches/tiledmove
+- https://dwm.suckless.org/patches/resizehere
+- https://dwm.suckless.org/patches/removeborder
+
 ## quick-start
 
 to get started run these commands:

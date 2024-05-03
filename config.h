@@ -46,39 +46,39 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 #include "vanitygaps.c"
 
 static const Layout layouts[] = {
-	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "[M]",      monocle },
-	{ "[@]",      spiral },
-	{ "[\\]",     dwindle },
-	{ "H[]",      deck },
-	{ "TTT",      bstack },
-	{ "===",      bstackhoriz },
-	{ "HHH",      grid },
-	{ "###",      nrowgrid },
-	{ "---",      horizgrid },
-	{ ":::",      gaplessgrid },
-	{ "|M|",      centeredmaster },
-	{ ">M>",      centeredfloatingmaster },
-	{ "><>",      NULL },    /* no layout function means floating behavior */
-	{ NULL,       NULL },
+  /* symbol     arrange function */
+  { "[]=",      tile },    /* first entry is default */
+  { "[M]",      monocle },
+  { "[@]",      spiral },
+  { "[\\]",     dwindle },
+  { "H[]",      deck },
+  { "TTT",      bstack },
+  { "===",      bstackhoriz },
+  { "HHH",      grid },
+  { "###",      nrowgrid },
+  { "---",      horizgrid },
+  { ":::",      gaplessgrid },
+  { "|M|",      centeredmaster },
+  { ">M>",      centeredfloatingmaster },
+  { "><>",      NULL },    /* no layout function means floating behavior */
+  { NULL,       NULL },
 };
 
 /* key definitions */
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
-	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+  { MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
+  { MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
+  { MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
+  { MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 #define STACKKEYS(MOD,ACTION) \
-	{ MOD, XK_j,     ACTION##stack, {.i = INC(+1) } }, \
-	{ MOD, XK_k,     ACTION##stack, {.i = INC(-1) } }, \
-	{ MOD, XK_grave, ACTION##stack, {.i = PREVSEL } }, \
-	{ MOD, XK_q,     ACTION##stack, {.i = 0 } }, \
-	{ MOD, XK_a,     ACTION##stack, {.i = 1 } }, \
-	{ MOD, XK_z,     ACTION##stack, {.i = 2 } }, \
-	{ MOD, XK_x,     ACTION##stack, {.i = -1 } },
+  { MOD, XK_j,     ACTION##stack, {.i = INC(+1) } }, \
+  { MOD, XK_k,     ACTION##stack, {.i = INC(-1) } }, \
+  { MOD, XK_grave, ACTION##stack, {.i = PREVSEL } }, \
+  { MOD, XK_q,     ACTION##stack, {.i = 0 } }, \
+  { MOD, XK_a,     ACTION##stack, {.i = 1 } }, \
+  { MOD, XK_z,     ACTION##stack, {.i = 2 } }, \
+  { MOD, XK_x,     ACTION##stack, {.i = -1 } },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -91,103 +91,103 @@ static const char *termcmd[]  = { "kitty", NULL };
 static const Key keys[] = {
   /* modifier                     key        function        argument */
 
-	// open app launcher MOD+r
+  // open app launcher MOD+r
   { MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
 
-	// spawn terminal MOD+return
-	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+  // spawn terminal MOD+return
+  { MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 
   // screenshot MOD+S (requires script in ~/Dev/scripts/screenshot.sh)
-	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("exec ~/Dev/scripts/screenshot.sh") },
+  { MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("exec ~/Dev/scripts/screenshot.sh") },
 
   // open file manager (nemo) MOD+e
-	{ MODKEY,                       XK_e,      spawn,          SHCMD("exec nemo") },
+  { MODKEY,                       XK_e,      spawn,          SHCMD("exec nemo") },
 
-	// show hide bar MOD+b
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
+  // show hide bar MOD+b
+  { MODKEY,                       XK_b,      togglebar,      {0} },
 
-	// move focus across windows MOD+j Mod+k
-	STACKKEYS(MODKEY,                          focus)
+  // move focus across windows MOD+j Mod+k
+  STACKKEYS(MODKEY,                          focus)
 
-	// move windows MOD+J Mod+K
-	STACKKEYS(MODKEY|ShiftMask,                push)
+  // move windows MOD+J Mod+K
+  STACKKEYS(MODKEY|ShiftMask,                push)
 
-	// incrase or decrease windows in master stack MOD+i Mod+d
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+  // incrase or decrease windows in master stack MOD+i Mod+d
+  { MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
+  { MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 
-	// adjust mfact MOD+h Mod+l
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+  // adjust mfact MOD+h Mod+l
+  { MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
+  { MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 
-	// adjust cfact MOD+H Mod+L Mod+O
-	{ MODKEY|ShiftMask,             XK_h,      setcfact,       {.f = +0.25} },
-	{ MODKEY|ShiftMask,             XK_l,      setcfact,       {.f = -0.25} },
-	{ MODKEY|ShiftMask,             XK_o,      setcfact,       {.f =  0.00} },
+  // adjust cfact MOD+H Mod+L Mod+O
+  { MODKEY|ShiftMask,             XK_h,      setcfact,       {.f = +0.25} },
+  { MODKEY|ShiftMask,             XK_l,      setcfact,       {.f = -0.25} },
+  { MODKEY|ShiftMask,             XK_o,      setcfact,       {.f =  0.00} },
 
-	{ MODKEY,                       XK_Return, zoom,           {0} },
+  { MODKEY,                       XK_Return, zoom,           {0} },
 
-	// adjust gaps MOD+ALT+u MOD+ALT+U
-	{ MODKEY|Mod1Mask,              XK_u,      incrgaps,       {.i = +10 } },
-	{ MODKEY|Mod1Mask|ShiftMask,    XK_u,      incrgaps,       {.i = -10 } },
+  // adjust gaps MOD+ALT+u MOD+ALT+U
+  { MODKEY|Mod1Mask,              XK_u,      incrgaps,       {.i = +10 } },
+  { MODKEY|Mod1Mask|ShiftMask,    XK_u,      incrgaps,       {.i = -10 } },
 
-	// adjust inside gaps MOD+ALT+i MOD+ALT+i
-	// { MODKEY|Mod1Mask,              XK_i,      incrigaps,      {.i = +1 } },
-	// { MODKEY|Mod1Mask|ShiftMask,    XK_i,      incrigaps,      {.i = -1 } },
+  // adjust inside gaps MOD+ALT+i MOD+ALT+i
+  // { MODKEY|Mod1Mask,              XK_i,      incrigaps,      {.i = +1 } },
+  // { MODKEY|Mod1Mask|ShiftMask,    XK_i,      incrigaps,      {.i = -1 } },
 
-	//  adjust outside gaps MOD+ALT+o MOD+ALT+o
-	// { MODKEY|Mod1Mask,              XK_o,      incrogaps,      {.i = +1 } },
-	// { MODKEY|Mod1Mask|ShiftMask,    XK_o,      incrogaps,      {.i = -1 } },
+  //  adjust outside gaps MOD+ALT+o MOD+ALT+o
+  // { MODKEY|Mod1Mask,              XK_o,      incrogaps,      {.i = +1 } },
+  // { MODKEY|Mod1Mask|ShiftMask,    XK_o,      incrogaps,      {.i = -1 } },
 
-	// { MODKEY|Mod1Mask,              XK_6,      incrihgaps,     {.i = +1 } },
-	// { MODKEY|Mod1Mask|ShiftMask,    XK_6,      incrihgaps,     {.i = -1 } },
-	// { MODKEY|Mod1Mask,              XK_7,      incrivgaps,     {.i = +1 } },
-	// { MODKEY|Mod1Mask|ShiftMask,    XK_7,      incrivgaps,     {.i = -1 } },
-	// { MODKEY|Mod1Mask,              XK_8,      incrohgaps,     {.i = +1 } },
-	// { MODKEY|Mod1Mask|ShiftMask,    XK_8,      incrohgaps,     {.i = -1 } },
-	// { MODKEY|Mod1Mask,              XK_9,      incrovgaps,     {.i = +1 } },
-	// { MODKEY|Mod1Mask|ShiftMask,    XK_9,      incrovgaps,     {.i = -1 } },
-	// { MODKEY|Mod1Mask,              XK_0,      togglegaps,     {0} },
-	// { MODKEY|Mod1Mask|ShiftMask,    XK_0,      defaultgaps,    {0} },
+  // { MODKEY|Mod1Mask,              XK_6,      incrihgaps,     {.i = +1 } },
+  // { MODKEY|Mod1Mask|ShiftMask,    XK_6,      incrihgaps,     {.i = -1 } },
+  // { MODKEY|Mod1Mask,              XK_7,      incrivgaps,     {.i = +1 } },
+  // { MODKEY|Mod1Mask|ShiftMask,    XK_7,      incrivgaps,     {.i = -1 } },
+  // { MODKEY|Mod1Mask,              XK_8,      incrohgaps,     {.i = +1 } },
+  // { MODKEY|Mod1Mask|ShiftMask,    XK_8,      incrohgaps,     {.i = -1 } },
+  // { MODKEY|Mod1Mask,              XK_9,      incrovgaps,     {.i = +1 } },
+  // { MODKEY|Mod1Mask|ShiftMask,    XK_9,      incrovgaps,     {.i = -1 } },
+  // { MODKEY|Mod1Mask,              XK_0,      togglegaps,     {0} },
+  // { MODKEY|Mod1Mask|ShiftMask,    XK_0,      defaultgaps,    {0} },
 
-	// tab tag
-	{ MODKEY,                       XK_Tab,    view,           {0} },
+  // tab tag
+  { MODKEY,                       XK_Tab,    view,           {0} },
 
-	// close window
-	{ MODKEY,                       XK_c,      killclient,     {0} },
+  // close window
+  { MODKEY,                       XK_c,      killclient,     {0} },
 
-	// change layouts MOD+(T|F|M)
-	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[2]} },
-	// { MODKEY,                       XK_space,  setlayout,      {0} },
-	// { MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+  // change layouts MOD+(T|F|M)
+  { MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[0]} },
+  { MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },
+  { MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[2]} },
+  // { MODKEY,                       XK_space,  setlayout,      {0} },
+  // { MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 
-	// view all windows MOD+0
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+  // view all windows MOD+0
+  { MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 
-	// make window on all tags MOD+SHIFT+0
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+  // make window on all tags MOD+SHIFT+0
+  { MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 
-	// move window to monitor
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+  // move window to monitor
+  { MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
+  { MODKEY,                       XK_period, focusmon,       {.i = +1 } },
+  { MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
+  { MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 
-	// change tag MOD+[1-9]
-	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
+  // change tag MOD+[1-9]
+  TAGKEYS(                        XK_1,                      0)
+  TAGKEYS(                        XK_2,                      1)
+  TAGKEYS(                        XK_3,                      2)
+  TAGKEYS(                        XK_4,                      3)
+  TAGKEYS(                        XK_5,                      4)
+  TAGKEYS(                        XK_6,                      5)
+  TAGKEYS(                        XK_7,                      6)
+  TAGKEYS(                        XK_8,                      7)
+  TAGKEYS(                        XK_9,                      8)
 
-	// quit dwm MOD+SHIFT+backspace
-	{ MODKEY|ShiftMask,             XK_BackSpace, quit,        {0} },
+  // quit dwm MOD+SHIFT+backspace
+  { MODKEY|ShiftMask,             XK_BackSpace, quit,        {0} },
 };
 
 /* button definitions */
