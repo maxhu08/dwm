@@ -19,7 +19,7 @@ patches included so far:
 - `resizehere` https://dwm.suckless.org/patches/resizehere
   - prevents mouse from warping to bottom right corner when resizing window
 
-planning to add:
+patches i might add later:
 
 - https://dwm.suckless.org/patches/removeborder
 
@@ -41,6 +41,14 @@ exec dwm
 
 ## showcase
 
+![1](./screenshots/1.png)
+
 ![2](./screenshots/2.png)
 
-![1](./screenshots/1.png)
+![3](./screenshots/3.png)
+
+![4](./screenshots/4.png)
+
+![5](./screenshots/5.png)
+
+![6](./screenshots/6.png)
