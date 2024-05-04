@@ -18,8 +18,12 @@ patches included so far:
   - makes it so MOD+lmb allows windows to stay tiled while moving them
 - `resizehere` https://dwm.suckless.org/patches/resizehere
   - prevents mouse from warping to bottom right corner when resizing window
-- `dragmfact` https://dwm.suckless.org/patches/dragmfact
+- `dragmfact` https://dwm.suckless.org/patches/dragmfact/
   - makes it so MOD+rmb resizes mfact
+
+patches i might add later:
+
+- https://dwm.suckless.org/patches/removeborder
 
 ## quick-start
 
