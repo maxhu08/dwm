@@ -2,7 +2,10 @@
 
 this is my fork of dwm
 
-also see my config for `dwmblocks`: https://github.com/maxhu08/dwmblocks
+also see:
+
+- my config for `st`: https://github.com/maxhu08/st
+- my config for `dwmblocks`: https://github.com/maxhu08/dwmblocks
 
 ## patches
 
