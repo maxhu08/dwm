@@ -158,6 +158,9 @@ static const Key keys[] = {
 	// { MODKEY,                       XK_space,  setlayout,      {0} },
 	// { MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 
+  // manually resetlayout
+  { MODKEY|ShiftMask,             XK_r,      resetlayout,    {0} },
+
 	// view all windows MOD+0
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 
