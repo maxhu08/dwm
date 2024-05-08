@@ -23,6 +23,8 @@ patches included so far:
   - prevents mouse from warping to bottom right corner when resizing window
 - `dragmfact` https://dwm.suckless.org/patches/dragmfact
   - makes it so MOD+rmb resizes mfact
+- `statusallmons` https://dwm.suckless.org/patches/statusallmons/
+  - makes it so that status bar gets updated on all monitors instead of just the focused one
 
 ## quick-start
 
