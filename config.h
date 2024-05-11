@@ -99,8 +99,10 @@ static const Key keys[] = {
 	// spawn terminal MOD+return
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 
-  // screenshot MOD+S (requires script in ~/Dev/scripts/screenshot.sh)
-	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("exec ~/Dev/scripts/screenshot.sh") },
+  // screenshot MOD+s (requires script in ~/Dev/scripts/screenshot.sh)
+	{ MODKEY,                       XK_s,      spawn,          SHCMD("exec ~/Dev/scripts/screenshot.sh") },
+  // screenshot MOD+S (requires script in ~/Dev/scripts/screenshot_crop.sh)
+	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("exec ~/Dev/scripts/screenshot_crop.sh") },
 
   // open file manager (nemo) MOD+e
 	{ MODKEY,                       XK_e,      spawn,          SHCMD("exec nemo") },
