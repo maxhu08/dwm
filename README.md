@@ -6,6 +6,7 @@ also see:
 
 - my config for `st`: https://github.com/maxhu08/st
 - my config for `dwmblocks`: https://github.com/maxhu08/dwmblocks
+- my config for `slock`: https://github.com/maxhu08/slock
 
 ## patches
 

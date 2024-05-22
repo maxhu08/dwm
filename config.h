@@ -17,7 +17,7 @@ static const char col_gray1[]       = "#171717";
 static const char col_gray2[]       = "#404040";
 static const char col_gray3[]       = "#a1a1aa";
 static const char col_gray4[]       = "#171717";
-static const char col_accent[]      = "#14b8a6";
+static const char col_accent[]      = "#8b5cf6";
 static const char *colors[][3]      = {
 	/*               fg         bg           border     */
 	[SchemeNorm] = { col_gray3, col_gray1 ,  col_gray2   },
@@ -102,13 +102,16 @@ static const Key keys[] = {
   // screenshot MOD+s (requires script in ~/Dev/scripts/screenshot.sh)
 	{ MODKEY,                       XK_s,      spawn,          SHCMD("exec ~/Dev/scripts/screenshot.sh") },
   // screenshot MOD+S (requires script in ~/Dev/scripts/screenshot_crop.sh)
-	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("exec ~/Dev/scripts/screenshot_crop.sh") },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("exec ~/Dev/scripts/screenshot_crop.sh &") },
 
   // open file manager (nemo) MOD+e
 	{ MODKEY,                       XK_e,      spawn,          SHCMD("exec nemo") },
 
 	// show hide bar MOD+b
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
+
+  // lockscreen MOD+ALT+L
+	{ MODKEY|ALTKEY|ShiftMask,      XK_l,      spawn,          SHCMD("exec slock") },
 
 	// move focus across windows MOD+j Mod+k
 	STACKKEYS(MODKEY,                          focus)
