@@ -63,3 +63,5 @@ exec dwm
 ![t1](./screenshots/t1.png)
 
 ![t2](./screenshots/t2.png)
+
+![t3](./screenshots/t3.png)
