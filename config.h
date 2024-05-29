@@ -12,7 +12,7 @@ static       int smartgaps          = 0;        /* 1 means no outer gap when the
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Jetbrains Mono NerdFont:size=12", "monospace:size=12" };
-static const char dmenufont[]       = "monospace:size=12";
+static const char dmenufont[]       = "Jetbrains Mono NerdFont:size=12";
 static const char col_gray1[]       = "#171717";
 static const char col_gray2[]       = "#404040";
 static const char col_gray3[]       = "#a1a1aa";
