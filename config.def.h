@@ -17,7 +17,7 @@ static const char col_gray1[]       = "#171717";
 static const char col_gray2[]       = "#404040";
 static const char col_gray3[]       = "#a1a1aa";
 static const char col_gray4[]       = "#171717";
-static const char col_accent[]      = "#8b5cf6";
+static const char col_accent[]      = "#06b6d4";
 static const char *colors[][3]      = {
 	/*               fg         bg           border     */
 	[SchemeNorm] = { col_gray3, col_gray1 ,  col_gray2   },
@@ -38,9 +38,9 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.5;  /* factor of master area size [0.05..0.95] */
-static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const float mfact        = 0.5;  /* factor of master area size [0.05..0.95] */
+static const int nmaster        = 1;    /* number of clients in master area */
+static const int resizehints    = 1;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 #define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
@@ -87,7 +87,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_accent, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-c", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_accent, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "kitty", NULL };
 
 static const Key keys[] = {
