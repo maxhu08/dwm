@@ -1,3 +1,5 @@
+#include "themes/mhtheme.h"
+
 // clang-format off
 /* See LICENSE file for copyright and license details. */
 
@@ -13,11 +15,13 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Jetbrains Mono NerdFont:size=12", "monospace:size=12" };
 static const char dmenufont[]       = "Jetbrains Mono NerdFont:size=12";
-static const char col_gray1[]       = "#171717";
-static const char col_gray2[]       = "#404040";
-static const char col_gray3[]       = "#a1a1aa";
-static const char col_gray4[]       = "#171717";
-static const char col_accent[]      = "#06b6d4";
+
+// ! color variables been moved to the themes directory
+// static const char col_gray1[]       = "#171717";
+// static const char col_gray2[]       = "#404040";
+// static const char col_gray3[]       = "#a1a1aa";
+// static const char col_gray4[]       = "#171717";
+// static const char col_accent[]      = "#06b6d4";
 static const char *colors[][3]      = {
 	/*               fg         bg           border     */
 	[SchemeNorm] = { col_gray3, col_gray1 ,  col_gray2   },
