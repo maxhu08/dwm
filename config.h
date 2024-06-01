@@ -95,111 +95,62 @@ static const char *dmenucmd[] = { "dmenu_run", "-c", "-m", dmenumon, "-fn", dmen
 static const char *termcmd[]  = { "kitty", NULL };
 
 static const Key keys[] = {
-  /* modifier                     key        function        argument */
+    /* modifier                     key        function        argument */
 
-	// open app launcher MOD+r
-  { MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
-
-	// spawn terminal MOD+return
-	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-
-  // screenshot MOD+s (requires script in ~/Dev/scripts/screenshot.sh)
-	{ MODKEY,                       XK_s,      spawn,          SHCMD("exec ~/Dev/scripts/screenshot.sh") },
-  // screenshot MOD+S (requires script in ~/Dev/scripts/screenshot_crop.sh)
-	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("exec ~/Dev/scripts/screenshot_crop.sh &") },
-
-  // open file manager (nemo) MOD+e
-	{ MODKEY,                       XK_e,      spawn,          SHCMD("exec nemo") },
-
-	// show hide bar MOD+b
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
-
-  // lockscreen MOD+ALT+L
-	{ MODKEY|ALTKEY|ShiftMask,      XK_l,      spawn,          SHCMD("exec slock") },
-
-	// move focus across windows MOD+j Mod+k
-	STACKKEYS(MODKEY,                          focus)
-
-	// move windows MOD+J Mod+K
-	STACKKEYS(MODKEY|ShiftMask,                push)
-
-	// incrase or decrease windows in master stack MOD+i Mod+d
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-
-	// adjust mfact MOD+h Mod+l
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-
-	// adjust cfact MOD+H Mod+L Mod+O
-	{ MODKEY|ShiftMask,             XK_h,      setcfact,       {.f = +0.25} },
-	{ MODKEY|ShiftMask,             XK_l,      setcfact,       {.f = -0.25} },
-	{ MODKEY|ShiftMask,             XK_o,      setcfact,       {.f =  0.00} },
-
-	{ MODKEY,                       XK_Return, zoom,           {0} },
-
-	// adjust gaps MOD+ALT+u MOD+ALT+U
-	{ MODKEY|ALTKEY,                XK_u,      incrgaps,       {.i = +10 } },
-	{ MODKEY|ALTKEY|ShiftMask,      XK_u,      incrgaps,       {.i = -10 } },
-
-	// adjust inside gaps MOD+ALT+i MOD+ALT+i
-	// { MODKEY|ALTKEY,                XK_i,      incrigaps,      {.i = +1 } },
-	// { MODKEY|ALTKEY|ShiftMask,      XK_i,      incrigaps,      {.i = -1 } },
-
-	//  adjust outside gaps MOD+ALT+o MOD+ALT+o
-	// { MODKEY|ALTKEY,                XK_o,      incrogaps,      {.i = +1 } },
-	// { MODKEY|Mod1Mask|ShiftMask,    XK_o,      incrogaps,      {.i = -1 } },
-
-	// tab tag
-	{ MODKEY,                       XK_Tab,    view,           {0} },
-
-	// close window
-	{ MODKEY,                       XK_c,      killclient,     {0} },
-
-	// change layouts MOD+ALT+[1-4]
-	{ MODKEY|ALTKEY,                XK_1,      setlayout,      {.v = &layouts[0]}  }, // tile
-	{ MODKEY|ALTKEY,                XK_2,      setlayout,      {.v = &layouts[13]} }, // float
-	{ MODKEY|ALTKEY,                XK_3,      setlayout,      {.v = &layouts[1]}  }, // monocle
-	{ MODKEY|ALTKEY,                XK_4,      setlayout,      {.v = &layouts[11]} }, // centeredmaster
-	{ MODKEY|ALTKEY,                XK_5,      setlayout,      {.v = &layouts[5]}  }, // bstac
-	{ MODKEY|ALTKEY,                XK_6,      setlayout,      {.v = &layouts[7]}  }, // grid
-  { MODKEY|ALTKEY,                XK_7,      setlayout,      {.v = &layouts[2]}  }, // spiral
-	// { MODKEY,                       XK_space,  setlayout,      {0} },
-	// { MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-
-  // manually resetlayout
-  { MODKEY|ShiftMask,             XK_r,      resetlayout,    {0} },
-
-	// view all windows MOD+0
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-
-	// make window on all tags MOD+SHIFT+0
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-
-	// move window to monitor
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-
-  // setborderpx MOD+{ MOD+}
-  { MODKEY|ShiftMask,             XK_bracketleft, 		setborderpx,    {.i = -2 } },
-	{ MODKEY|ShiftMask,             XK_bracketright, 		setborderpx,    {.i = +2 } },
-  // { MODKEY|ShiftMask,             XK_numbersign, 	setborderpx,    {.i = 0 } },
-
-	// change tag MOD+[1-9]
-	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
-
-	// quit dwm MOD+SHIFT+backspace
-	{ MODKEY|ShiftMask,             XK_BackSpace, quit,        {0} },
+    { MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },                // open app launcher MOD+r
+    { MODKEY,                       XK_Return, spawn,          {.v = termcmd } },                 // spawn terminal MOD+return
+    { MODKEY,                       XK_s,      spawn,          SHCMD("exec ~/Dev/scripts/screenshot.sh") },                   // screenshot MOD+s (requires script in ~/Dev/scripts/screenshot.sh)
+    { MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("exec ~/Dev/scripts/screenshot_crop.sh &") },            // screenshot MOD+S (requires script in ~/Dev/scripts/screenshot_crop.sh)
+    { MODKEY,                       XK_e,      spawn,          SHCMD("exec nemo") },              // open file manager (nemo) MOD+e
+    { MODKEY,                       XK_b,      togglebar,      {0} },                             // show hide bar MOD+b
+    { MODKEY|ALTKEY|ShiftMask,      XK_l,      spawn,          SHCMD("exec slock") },             // lockscreen MOD+ALT+L
+    STACKKEYS(MODKEY,                          focus)                                             // move focus across windows MOD+j Mod+k
+    STACKKEYS(MODKEY|ShiftMask,                push)                                              // move windows MOD+J Mod+K
+    { MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },                      // increase windows in master stack MOD+i
+    { MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },                      // decrease windows in master stack MOD+d
+    { MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },                    // adjust mfact MOD+h
+    { MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },                    // adjust mfact MOD+l
+    { MODKEY|ShiftMask,             XK_h,      setcfact,       {.f = +0.25} },                    // adjust cfact MOD+H
+    { MODKEY|ShiftMask,             XK_l,      setcfact,       {.f = -0.25} },                    // adjust cfact MOD+L
+    { MODKEY|ShiftMask,             XK_o,      setcfact,       {.f =  0.00} },                    // adjust cfact MOD+O
+    { MODKEY,                       XK_Return, zoom,           {0} },
+    { MODKEY|ALTKEY,                XK_u,      incrgaps,       {.i = +10 } },                     // adjust gaps MOD+ALT+u
+    { MODKEY|ALTKEY|ShiftMask,      XK_u,      incrgaps,       {.i = -10 } },                     // adjust gaps MOD+ALT+U
+    // { MODKEY|ALTKEY,                XK_i,      incrigaps,      {.i = +1 } },                   // adjust inside gaps MOD+ALT+i
+    // { MODKEY|ALTKEY|ShiftMask,      XK_i,      incrigaps,      {.i = -1 } },                   // adjust inside gaps MOD+ALT+I
+    // { MODKEY|ALTKEY,                XK_o,      incrogaps,      {.i = +1 } },                   // adjust outside gaps MOD+ALT+o
+    // { MODKEY|Mod1Mask|ShiftMask,    XK_o,      incrogaps,      {.i = -1 } },                   // adjust outside gaps MOD+ALT+O
+    { MODKEY,                       XK_Tab,    view,           {0} },                             // tab tag
+    { MODKEY,                       XK_c,      killclient,     {0} },                             // close window
+    { MODKEY|ALTKEY,                XK_1,      setlayout,      {.v = &layouts[0]} },              // change layout to tile MOD+ALT+1
+    { MODKEY|ALTKEY,                XK_2,      setlayout,      {.v = &layouts[13]} },             // change layout to float MOD+ALT+2
+    { MODKEY|ALTKEY,                XK_3,      setlayout,      {.v = &layouts[1]} },              // change layout to monocle MOD+ALT+3
+    { MODKEY|ALTKEY,                XK_4,      setlayout,      {.v = &layouts[11]} },             // change layout to centeredmaster MOD+ALT+4
+    { MODKEY|ALTKEY,                XK_5,      setlayout,      {.v = &layouts[5]} },              // change layout to bstac MOD+ALT+5
+    { MODKEY|ALTKEY,                XK_6,      setlayout,      {.v = &layouts[7]} },              // change layout to grid MOD+ALT+6
+    { MODKEY|ALTKEY,                XK_7,      setlayout,      {.v = &layouts[2]} },              // change layout to spiral MOD+ALT+7
+    // { MODKEY,                       XK_space,  setlayout,      {0} },
+    // { MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+    { MODKEY|ShiftMask,             XK_r,      resetlayout,    {0} },                             // manually reset layout
+    { MODKEY,                       XK_0,      view,           {.ui = ~0 } },                     // view all windows MOD+0
+    { MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },                     // make window on all tags MOD+SHIFT+0
+    { MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },                      // move window to monitor MOD+,
+    { MODKEY,                       XK_period, focusmon,       {.i = +1 } },                      // move window to monitor MOD+.
+    { MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },                      // move window to monitor MOD+SHIFT+,
+    { MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },                      // move window to monitor MOD+SHIFT+.
+    { MODKEY|ShiftMask,             XK_bracketleft,  setborderpx,    {.i = -2 } },                // set border px MOD+[
+    { MODKEY|ShiftMask,             XK_bracketright, setborderpx,    {.i = +2 } },                // set border px MOD+]
+    // { MODKEY|ShiftMask,             XK_numbersign, setborderpx,    {.i = 0 } },
+    TAGKEYS(                        XK_1,                      0)                                 // change tag MOD+[1-9]
+    TAGKEYS(                        XK_2,                      1)
+    TAGKEYS(                        XK_3,                      2)
+    TAGKEYS(                        XK_4,                      3)
+    TAGKEYS(                        XK_5,                      4)
+    TAGKEYS(                        XK_6,                      5)
+    TAGKEYS(                        XK_7,                      6)
+    TAGKEYS(                        XK_8,                      7)
+    TAGKEYS(                        XK_9,                      8)
+    { MODKEY|ShiftMask,             XK_BackSpace, quit,        {0} },                             // quit dwm MOD+SHIFT+backspace
 };
 
 /* button definitions */
