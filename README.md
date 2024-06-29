@@ -1,6 +1,6 @@
 # dwm
 
-this is my fork of dwm
+this is my build of `dwm-6.5`
 
 also see:
 
