@@ -48,20 +48,20 @@ exec dwm
 
 ## showcase
 
-![1](https://blog.maxhu.dev/assets/dwm/1.png)
+![1](./screenshots/1.png)
 
-![2](https://blog.maxhu.dev/assets/dwm/2.png)
+![2](./screenshots/2.png)
 
-![3](https://blog.maxhu.dev/assets/dwm/3.png)
+![3](./screenshots/3.png)
 
-![4](https://blog.maxhu.dev/assets/dwm/4.png)
+![4](./screenshots/4.png)
 
-![5](https://blog.maxhu.dev/assets/dwm/5.png)
+![5](./screenshots/5.png)
 
-![6](https://blog.maxhu.dev/assets/dwm/6.png)
+![6](./screenshots/6.png)
 
-![t1](https://blog.maxhu.dev/assets/dwm/t1.png)
+![t1](./screenshots/t1.png)
 
-![t2](https://blog.maxhu.dev/assets/dwm/t2.png)
+![t2](./screenshots/t2.png)
 
-![t3](https://blog.maxhu.dev/assets/dwm/t3.png)
+![t3](./screenshots/t3.png)
