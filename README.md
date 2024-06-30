@@ -2,6 +2,10 @@
 
 this is my build of `dwm-6.5`
 
+NOTE: I don't use this anymore and have instead switched to my newer build: `dwm-rev1` which is similar to this build of dwm, just revised (less buggy and removed patches I didn't really use).
+
+You can `dwm-rev1` here -> https://github.com/maxhu08/dwm-rev1
+
 also see:
 
 - my config for `slstatus`: https://github.com/maxhu08/slstatus
